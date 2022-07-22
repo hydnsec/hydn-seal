@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.vscode
+.env
+
+node_modules
+cache
+coverage.json
+coverage
+deployments/localhost
