@@ -19,6 +19,7 @@ async function main() {
 
   console.info('Upgrading proxy implementation...')
   const implTx = await hre.upgrades.upgradeProxy(proxy, HYDNSeal, {
+    kind: 'uups',
     timeout: 0,
     pollingInterval: 10000,
   })

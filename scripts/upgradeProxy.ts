@@ -9,6 +9,7 @@ async function main() {
   const HYDNSeal1 = await hre.ethers.getContractFactory('HYDNSeal1', signer)
   console.info('Upgrading proxy implementation...')
   const upgradeProxy = await hre.upgrades.upgradeProxy(HYDNSealProxyDeployment.address, HYDNSeal1, {
+    kind: 'uups',
     call: 'initialize',
     timeout: 0,
     pollingInterval: 10000,
