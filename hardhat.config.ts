@@ -63,7 +63,9 @@ const config: HardhatUserConfig = {
       default: 1,
     },
     deployer: {
-      default: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
+      localhost: 0,
+      hardhat: 0,
+      goerli: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
     },
   },
   networks: {

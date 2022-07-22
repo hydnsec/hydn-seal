@@ -7,16 +7,16 @@ async function main() {
   const signer = await hre.ethers.getSigner(deployer)
 
   const HYDNSeal = await hre.ethers.getContractFactory('HYDNSeal', signer)
-  console.info('Deploying proxy')
+  console.info('Deploying proxy...')
   const proxy = await hre.upgrades.deployProxy(HYDNSeal, {
     kind: 'uups',
     timeout: 0,
     pollingInterval: 10000,
   })
   await proxy.deployTransaction.wait()
-  console.info(`HYDNSeal proxy ${proxy.address}`)
+  console.info(`HYDNSeal proxy done ${proxy.address}`)
 
-  console.info('Upgrade proxy implementation')
+  console.info('Upgrading proxy implementation...')
   const implTx = await hre.upgrades.upgradeProxy(proxy, HYDNSeal, {
     timeout: 0,
     pollingInterval: 10000,
@@ -31,13 +31,13 @@ async function main() {
     ...artifact,
   }
 
-  console.info('Save artifacts')
+  console.info('Saving artifacts...')
   await save('HYDNSeal', proxyDeployments)
   console.info('Save artifacts done')
 
-  await wait(10000)
-  console.info('Verifying')
   if (!['localhost', 'hardhat'].includes(hre.network.name)) {
+    console.info('Verifying...')
+    await wait(10000)
     await hre.run('verify:verify', {
       address: implAddress,
       constructorArguments: [],
