@@ -1,4 +1,5 @@
 import hre from 'hardhat'
+import { wait } from '../modules/utils'
 
 async function main() {
   const { save } = hre.deployments
@@ -13,7 +14,7 @@ async function main() {
     pollingInterval: 10000,
   })
   await proxy.deployTransaction.wait()
-  console.info(`HYDNSeal ${proxy.address}`)
+  console.info(`HYDNSeal proxy ${proxy.address}`)
 
   console.info('Upgrade proxy implementation')
   const implTx = await hre.upgrades.upgradeProxy(proxy, HYDNSeal, {
@@ -32,11 +33,14 @@ async function main() {
 
   console.info('Save artifacts')
   await save('HYDNSeal', proxyDeployments)
+  console.info('Save artifacts done')
+
+  await wait(10000)
   console.info('Verifying')
   if (!['localhost', 'hardhat'].includes(hre.network.name)) {
     await hre.run('verify:verify', {
       address: implAddress,
-      // constructorArguments: [],
+      constructorArguments: [],
     })
   }
 }
