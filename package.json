@@ -29,11 +29,13 @@
     "prettier:sol:write": "prettier --write 'contracts/**/*.sol'",
     "script:deployProxy:localhost": "hardhat run scripts/deployProxy.ts --network localhost",
     "script:upgradeProxy:localhost": "hardhat run scripts/upgradeProxy.ts --network localhost",
+    "task:createSeal:localhost": "hardhat createSeal --network localhost",
+    "task:getNextId:localhost": "hardhat getNextId --network localhost",
     "task:mint:localhost": "hardhat mint --network localhost",
-    "script:deployProxy:goerli": "hardhat run scripts/deployProxy.ts --network goerli",
-    "script:upgradeProxy:goerli": "hardhat run scripts/upgradeProxy.ts --network goerli",
-    "task:mint:goerli": "hardhat mint --network goerli",
     "script:deployProxy:rinkeby": "hardhat run scripts/deployProxy.ts --network rinkeby",
+    "script:upgradeProxy:rinkeby": "hardhat run scripts/upgradeProxy.ts --network rinkeby",
+    "task:createSeal:rinkeby": "hardhat createSeal --network rinkeby",
+    "task:getNextId:rinkeby": "hardhat getNextId --network rinkeby",
     "task:mint:rinkeby": "hardhat mint --network rinkeby"
   },
   "dependencies": {

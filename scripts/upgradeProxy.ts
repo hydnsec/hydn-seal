@@ -10,7 +10,10 @@ async function main() {
   console.info('Upgrading proxy implementation...')
   const upgradeProxy = await hre.upgrades.upgradeProxy(HYDNSealProxyDeployment.address, HYDNSeal1, {
     kind: 'uups',
-    call: 'initialize',
+    call: {
+      fn: 'initialize',
+      args: ['http://localhost:3000/api/seals/'],
+    },
     timeout: 0,
     pollingInterval: 10000,
   })

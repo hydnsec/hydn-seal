@@ -2,9 +2,10 @@
 pragma solidity 0.8.15;
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 import '@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol';
+import '@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol';
-import '@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155URIStorageUpgradeable.sol';
+import '@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol';
 import './HYDNSealStorage.sol';
 
@@ -15,26 +16,24 @@ contract HYDNSeal is
   ContextUpgradeable,
   UUPSUpgradeable,
   OwnableUpgradeable,
-  ERC1155URIStorageUpgradeable,
+  ERC1155Upgradeable,
   ERC1155SupplyUpgradeable,
   HYDNSealStorage
 {
-  using CountersUpgradeable for CountersUpgradeable.Counter;
-
   /// @custom:oz-upgrades-unsafe-allow constructor
   constructor() {
     _disableInitializers();
   }
 
-  function initialize() external initializer {
+  function initialize(string memory _baseURI) external initializer {
     __Context_init();
     __UUPSUpgradeable_init();
     __Ownable_init();
-    __ERC1155URIStorage_init();
+    __ERC1155_init(_baseURI);
     __ERC1155Supply_init();
     name = 'HYDN Seal';
     symbol = 'HYDNSEAL';
-    _setBaseURI('ipfs://');
+    totalAudits = block.chainid * 10_000_000;
   }
 
   function _authorizeUpgrade(address newImplementation) internal override onlyOwner {
@@ -58,7 +57,7 @@ contract HYDNSeal is
     uint256,
     uint256,
     bytes memory
-  ) public virtual override {
+  ) public override {
     revert('HYDNSeal: transfer not allowed');
   }
 
@@ -68,24 +67,18 @@ contract HYDNSeal is
     uint256[] memory,
     uint256[] memory,
     bytes memory
-  ) public virtual override {
+  ) public override {
     revert('HYDNSeal: transfer batch not allowed');
   }
 
-  function uri(uint256 tokenId)
-    public
-    view
-    virtual
-    override(ERC1155URIStorageUpgradeable, ERC1155Upgradeable)
-    returns (string memory)
-  {
-    return super.uri(tokenId);
+  function uri(uint256 _tokenId) public view override returns (string memory) {
+    require(exists(_tokenId), 'HYDNSeal: token not existing');
+    return string(abi.encodePacked(super.uri(_tokenId), StringsUpgradeable.toString(_tokenId)));
   }
 
-  function mintSeal(address[] calldata _contracts, string memory tokenURI) external onlyOwner returns (bool success) {
-    totalAudits.increment();
-    uint256 id = totalAudits.current();
-    _setURI(id, tokenURI);
+  function mintSeal(address[] calldata _contracts) external onlyOwner returns (bool success) {
+    totalAudits += 1;
+    uint256 id = totalAudits;
     for (uint8 i = 0; i < _contracts.length; i++) {
       _mint(_contracts[i], id, 1, '');
     }

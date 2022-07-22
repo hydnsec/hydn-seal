@@ -78,9 +78,7 @@ export interface HYDNSealStorage extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<[string]>;
 
-    totalAudits(
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { _value: BigNumber }>;
+    totalAudits(overrides?: CallOverrides): Promise<[BigNumber]>;
   };
 
   name(overrides?: CallOverrides): Promise<string>;
