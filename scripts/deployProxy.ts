@@ -13,6 +13,7 @@ async function main() {
     timeout: 0,
     pollingInterval: 10000,
   })
+  console.info(`Deploying proxy wait tx ${proxy.deployTransaction.hash}...`)
   await proxy.deployTransaction.wait()
   console.info(`HYDNSeal proxy done ${proxy.address}`)
 
@@ -21,6 +22,7 @@ async function main() {
     timeout: 0,
     pollingInterval: 10000,
   })
+  console.info(`Upgrading proxy implementation wait tx ${implTx.deployTransaction.hash}...`)
   await implTx.deployTransaction.wait()
   const implAddress = await hre.upgrades.erc1967.getImplementationAddress(proxy.address)
   console.info(`HYDNSeal impl ${implAddress}`)

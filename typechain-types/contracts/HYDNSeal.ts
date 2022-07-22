@@ -32,8 +32,11 @@ export interface HYDNSealInterface extends utils.Interface {
   functions: {
     "balanceOf(address,uint256)": FunctionFragment;
     "balanceOfBatch(address[],uint256[])": FunctionFragment;
+    "exists(uint256)": FunctionFragment;
     "initialize()": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
+    "mintSeal(address[],string)": FunctionFragment;
+    "name()": FunctionFragment;
     "owner()": FunctionFragment;
     "proxiableUUID()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
@@ -41,7 +44,9 @@ export interface HYDNSealInterface extends utils.Interface {
     "safeTransferFrom(address,address,uint256,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
-    "test()": FunctionFragment;
+    "symbol()": FunctionFragment;
+    "totalAudits()": FunctionFragment;
+    "totalSupply(uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "upgradeTo(address)": FunctionFragment;
     "upgradeToAndCall(address,bytes)": FunctionFragment;
@@ -52,8 +57,11 @@ export interface HYDNSealInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "balanceOf"
       | "balanceOfBatch"
+      | "exists"
       | "initialize"
       | "isApprovedForAll"
+      | "mintSeal"
+      | "name"
       | "owner"
       | "proxiableUUID"
       | "renounceOwnership"
@@ -61,7 +69,9 @@ export interface HYDNSealInterface extends utils.Interface {
       | "safeTransferFrom"
       | "setApprovalForAll"
       | "supportsInterface"
-      | "test"
+      | "symbol"
+      | "totalAudits"
+      | "totalSupply"
       | "transferOwnership"
       | "upgradeTo"
       | "upgradeToAndCall"
@@ -77,6 +87,10 @@ export interface HYDNSealInterface extends utils.Interface {
     values: [PromiseOrValue<string>[], PromiseOrValue<BigNumberish>[]]
   ): string;
   encodeFunctionData(
+    functionFragment: "exists",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "initialize",
     values?: undefined
   ): string;
@@ -84,6 +98,11 @@ export interface HYDNSealInterface extends utils.Interface {
     functionFragment: "isApprovedForAll",
     values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(
+    functionFragment: "mintSeal",
+    values: [PromiseOrValue<string>[], PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "proxiableUUID",
@@ -121,7 +140,15 @@ export interface HYDNSealInterface extends utils.Interface {
     functionFragment: "supportsInterface",
     values: [PromiseOrValue<BytesLike>]
   ): string;
-  encodeFunctionData(functionFragment: "test", values?: undefined): string;
+  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "totalAudits",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "totalSupply",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [PromiseOrValue<string>]
@@ -144,11 +171,14 @@ export interface HYDNSealInterface extends utils.Interface {
     functionFragment: "balanceOfBatch",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "exists", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "mintSeal", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "proxiableUUID",
@@ -174,7 +204,15 @@ export interface HYDNSealInterface extends utils.Interface {
     functionFragment: "supportsInterface",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "test", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "totalAudits",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "totalSupply",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
@@ -343,6 +381,11 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
+    exists(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     initialize(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -352,6 +395,14 @@ export interface HYDNSeal extends BaseContract {
       operator: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
+
+    mintSeal(
+      _contracts: PromiseOrValue<string>[],
+      tokenURI: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    name(overrides?: CallOverrides): Promise<[string]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
 
@@ -390,7 +441,16 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    test(overrides?: CallOverrides): Promise<[BigNumber]>;
+    symbol(overrides?: CallOverrides): Promise<[string]>;
+
+    totalAudits(
+      overrides?: CallOverrides
+    ): Promise<[BigNumber] & { _value: BigNumber }>;
+
+    totalSupply(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
@@ -426,6 +486,11 @@ export interface HYDNSeal extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
+  exists(
+    id: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   initialize(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -435,6 +500,14 @@ export interface HYDNSeal extends BaseContract {
     operator: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<boolean>;
+
+  mintSeal(
+    _contracts: PromiseOrValue<string>[],
+    tokenURI: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  name(overrides?: CallOverrides): Promise<string>;
 
   owner(overrides?: CallOverrides): Promise<string>;
 
@@ -473,7 +546,14 @@ export interface HYDNSeal extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  test(overrides?: CallOverrides): Promise<BigNumber>;
+  symbol(overrides?: CallOverrides): Promise<string>;
+
+  totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
+
+  totalSupply(
+    id: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   transferOwnership(
     newOwner: PromiseOrValue<string>,
@@ -509,6 +589,11 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
+    exists(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     initialize(overrides?: CallOverrides): Promise<void>;
 
     isApprovedForAll(
@@ -516,6 +601,14 @@ export interface HYDNSeal extends BaseContract {
       operator: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    mintSeal(
+      _contracts: PromiseOrValue<string>[],
+      tokenURI: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    name(overrides?: CallOverrides): Promise<string>;
 
     owner(overrides?: CallOverrides): Promise<string>;
 
@@ -552,7 +645,14 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    test(overrides?: CallOverrides): Promise<BigNumber>;
+    symbol(overrides?: CallOverrides): Promise<string>;
+
+    totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
+
+    totalSupply(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
@@ -673,6 +773,11 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    exists(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     initialize(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -682,6 +787,14 @@ export interface HYDNSeal extends BaseContract {
       operator: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    mintSeal(
+      _contracts: PromiseOrValue<string>[],
+      tokenURI: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    name(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -720,7 +833,14 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    test(overrides?: CallOverrides): Promise<BigNumber>;
+    symbol(overrides?: CallOverrides): Promise<BigNumber>;
+
+    totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
+
+    totalSupply(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
@@ -757,6 +877,11 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    exists(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     initialize(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -766,6 +891,14 @@ export interface HYDNSeal extends BaseContract {
       operator: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    mintSeal(
+      _contracts: PromiseOrValue<string>[],
+      tokenURI: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -804,7 +937,14 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    test(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    totalAudits(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    totalSupply(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,

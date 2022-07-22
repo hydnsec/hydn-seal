@@ -2,4 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { HYDNSeal } from "./HYDNSeal";
-export type { HYDNSeal1 } from "./HYDNSeal1";
+export type { HYDNSealStorage } from "./HYDNSealStorage";

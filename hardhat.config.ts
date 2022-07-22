@@ -34,8 +34,7 @@ const config: HardhatUserConfig = {
       {
         version: '0.8.15',
         settings: {
-          // evmVersion: 'berlin',
-          viaIR: true,
+          // viaIR: true,
           optimizer: {
             enabled: true,
             runs: 20000,
@@ -103,6 +102,12 @@ const config: HardhatUserConfig = {
       url: 'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       gasPrice: parseUnits('2', 'gwei').toNumber(),
       accounts: [process.env.GOERLI_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
+    },
+    rinkeby: {
+      chainId: 4,
+      url: 'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+      gasPrice: parseUnits('2', 'gwei').toNumber(),
+      accounts: [process.env.RINKEBY_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
     },
 
     polygon: {

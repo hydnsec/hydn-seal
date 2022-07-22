@@ -10,6 +10,7 @@ export type { ERC1967UpgradeUpgradeable } from "./@openzeppelin/contracts-upgrad
 export type { Initializable } from "./@openzeppelin/contracts-upgradeable/proxy/utils/Initializable";
 export type { UUPSUpgradeable } from "./@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable";
 export type { ERC1155Upgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable";
+export type { ERC1155SupplyUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable";
 export type { ERC1155URIStorageUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155URIStorageUpgradeable";
 export type { IERC1155MetadataURIUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable";
 export type { IERC1155ReceiverUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable";
@@ -18,7 +19,7 @@ export type { ContextUpgradeable } from "./@openzeppelin/contracts-upgradeable/u
 export type { ERC165Upgradeable } from "./@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable";
 export type { IERC165Upgradeable } from "./@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable";
 export type { HYDNSeal } from "./contracts/HYDNSeal";
-export type { HYDNSeal1 } from "./contracts/HYDNSeal1";
+export type { HYDNSealStorage } from "./contracts/HYDNSealStorage";
 export * as factories from "./factories";
 export { OwnableUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable__factory";
 export { IERC1822ProxiableUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/interfaces/draft-IERC1822Upgradeable.sol/IERC1822ProxiableUpgradeable__factory";
@@ -27,6 +28,7 @@ export { ERC1967UpgradeUpgradeable__factory } from "./factories/@openzeppelin/co
 export { Initializable__factory } from "./factories/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable__factory";
 export { UUPSUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable__factory";
 export { ERC1155Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable__factory";
+export { ERC1155SupplyUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable__factory";
 export { ERC1155URIStorageUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155URIStorageUpgradeable__factory";
 export { IERC1155MetadataURIUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable__factory";
 export { IERC1155ReceiverUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable__factory";
@@ -34,7 +36,7 @@ export { IERC1155Upgradeable__factory } from "./factories/@openzeppelin/contract
 export { ContextUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable__factory";
 export { ERC165Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable__factory";
 export { IERC165Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable__factory";
-export { HYDNSeal1__factory } from "./factories/contracts/HYDNSeal1__factory";
+export { HYDNSealStorage__factory } from "./factories/contracts/HYDNSealStorage__factory";
 export { HYDNSeal__factory } from "./factories/contracts/HYDNSeal__factory";
 export type { openzeppelin };
 export type { contracts };
