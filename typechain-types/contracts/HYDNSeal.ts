@@ -413,20 +413,20 @@ export interface HYDNSeal extends BaseContract {
     ): Promise<ContractTransaction>;
 
     safeBatchTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      ids: PromiseOrValue<BigNumberish>[],
-      amounts: PromiseOrValue<BigNumberish>[],
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>[],
+      arg3: PromiseOrValue<BigNumberish>[],
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     safeTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      id: PromiseOrValue<BigNumberish>,
-      amount: PromiseOrValue<BigNumberish>,
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BigNumberish>,
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -518,20 +518,20 @@ export interface HYDNSeal extends BaseContract {
   ): Promise<ContractTransaction>;
 
   safeBatchTransferFrom(
-    from: PromiseOrValue<string>,
-    to: PromiseOrValue<string>,
-    ids: PromiseOrValue<BigNumberish>[],
-    amounts: PromiseOrValue<BigNumberish>[],
-    data: PromiseOrValue<BytesLike>,
+    arg0: PromiseOrValue<string>,
+    arg1: PromiseOrValue<string>,
+    arg2: PromiseOrValue<BigNumberish>[],
+    arg3: PromiseOrValue<BigNumberish>[],
+    arg4: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   safeTransferFrom(
-    from: PromiseOrValue<string>,
-    to: PromiseOrValue<string>,
-    id: PromiseOrValue<BigNumberish>,
-    amount: PromiseOrValue<BigNumberish>,
-    data: PromiseOrValue<BytesLike>,
+    arg0: PromiseOrValue<string>,
+    arg1: PromiseOrValue<string>,
+    arg2: PromiseOrValue<BigNumberish>,
+    arg3: PromiseOrValue<BigNumberish>,
+    arg4: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -617,20 +617,20 @@ export interface HYDNSeal extends BaseContract {
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
     safeBatchTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      ids: PromiseOrValue<BigNumberish>[],
-      amounts: PromiseOrValue<BigNumberish>[],
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>[],
+      arg3: PromiseOrValue<BigNumberish>[],
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     safeTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      id: PromiseOrValue<BigNumberish>,
-      amount: PromiseOrValue<BigNumberish>,
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BigNumberish>,
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -805,20 +805,20 @@ export interface HYDNSeal extends BaseContract {
     ): Promise<BigNumber>;
 
     safeBatchTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      ids: PromiseOrValue<BigNumberish>[],
-      amounts: PromiseOrValue<BigNumberish>[],
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>[],
+      arg3: PromiseOrValue<BigNumberish>[],
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     safeTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      id: PromiseOrValue<BigNumberish>,
-      amount: PromiseOrValue<BigNumberish>,
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BigNumberish>,
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -909,20 +909,20 @@ export interface HYDNSeal extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     safeBatchTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      ids: PromiseOrValue<BigNumberish>[],
-      amounts: PromiseOrValue<BigNumberish>[],
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>[],
+      arg3: PromiseOrValue<BigNumberish>[],
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     safeTransferFrom(
-      from: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      id: PromiseOrValue<BigNumberish>,
-      amount: PromiseOrValue<BigNumberish>,
-      data: PromiseOrValue<BytesLike>,
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BigNumberish>,
+      arg4: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

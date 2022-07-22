@@ -16,7 +16,7 @@ describe('HYDNSeal', function () {
     signerOther1 = signers[2]
     const HYDNSealFactory = await hre.ethers.getContractFactory('HYDNSeal', signer)
     proxy = (await hre.upgrades.deployProxy(HYDNSealFactory, { kind: 'uups' })) as HYDNSeal
-    await hre.upgrades.upgradeProxy(proxy.address, HYDNSealFactory)
+    await hre.upgrades.upgradeProxy(proxy.address, HYDNSealFactory, { kind: 'uups' })
   })
 
   it('Should be setup', async () => {
