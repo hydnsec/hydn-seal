@@ -33,7 +33,7 @@ task('findContract', 'find contract').setAction(async () => {
     '76543',
     '65432',
     '54321',
-    '4321',
+    // '4321',
     '01234',
     '1234',
   ]

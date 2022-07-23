@@ -16,6 +16,7 @@
     "./deploy",
     "./test",
     "./scripts",
+    "./typechain-types",
     "./modules"
   ]
 }

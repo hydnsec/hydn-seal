@@ -31,9 +31,11 @@ contract HYDNSeal is
     __Ownable_init();
     __ERC1155_init(_baseURI);
     __ERC1155Supply_init();
-    name = 'HYDN Seal';
-    symbol = 'HYDNSEAL';
     totalAudits = block.chainid * 10_000_000;
+    name = 'HYDN Seal';
+    // solhint-disable-next-line prettier/prettier
+    // prettier-ignore
+    symbol = unicode"⛑";
   }
 
   function _authorizeUpgrade(address newImplementation) internal override onlyOwner {

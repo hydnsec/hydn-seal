@@ -8,7 +8,7 @@ async function main() {
 
   const HYDNSeal = await hre.ethers.getContractFactory('HYDNSeal', signer)
   console.info('Deploying proxy...')
-  const proxy = await hre.upgrades.deployProxy(HYDNSeal, ['http://localhost:3000/api/seals/'], {
+  const proxy = await hre.upgrades.deployProxy(HYDNSeal, ['https://hydnsec.com/api/seals/'], {
     kind: 'uups',
     timeout: 0,
     pollingInterval: 10000,

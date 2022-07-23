@@ -34,6 +34,7 @@ const config: HardhatUserConfig = {
       {
         version: '0.8.15',
         settings: {
+          // evmVersion: 'berlin',
           // viaIR: true,
           optimizer: {
             enabled: true,
@@ -65,6 +66,8 @@ const config: HardhatUserConfig = {
       localhost: 0,
       hardhat: 0,
       goerli: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
+      rinkeby: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
+      bsc: '0xa559a9Af609CEDC440433F57a02b6E7bB3B89bB0',
     },
   },
   networks: {
@@ -80,6 +83,7 @@ const config: HardhatUserConfig = {
     bsc: {
       chainId: 56,
       url: 'https://rpc.ankr.com/bsc',
+      hardfork: 'berlin',
       gasPrice: parseUnits('5.1', 'gwei').toNumber(),
       accounts: [process.env.BSC_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
     },

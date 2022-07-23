@@ -2,5 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { ERC1155SupplyUpgradeable } from "./ERC1155SupplyUpgradeable";
-export type { ERC1155URIStorageUpgradeable } from "./ERC1155URIStorageUpgradeable";
 export type { IERC1155MetadataURIUpgradeable } from "./IERC1155MetadataURIUpgradeable";
