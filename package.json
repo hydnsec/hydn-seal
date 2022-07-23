@@ -27,6 +27,7 @@
     "prettier:js:write": "prettier --write .",
     "prettier:sol": "prettier --check 'contracts/**/*.sol'",
     "prettier:sol:write": "prettier --write 'contracts/**/*.sol'",
+    "task:findContract": "NODE_OPTIONS=--openssl-legacy-provider hardhat findContract",
     "script:deployProxy:localhost": "hardhat run scripts/deployProxy.ts --network localhost",
     "script:upgradeProxy:localhost": "hardhat run scripts/upgradeProxy.ts --network localhost",
     "task:createSeal:localhost": "hardhat createSeal --network localhost",
