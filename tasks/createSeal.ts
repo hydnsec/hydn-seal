@@ -25,10 +25,9 @@ task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
   console.info('ipfsHashImage', ipfsHashImage)
   newSeal.ipfsHashImage = ipfsHashImage
   seals.push(newSeal)
+  // const ipfsHashMetadata = await uploadMetadata(ipfsHashImage, audit.projectName, audit.reportUrl, audit.contracts)
+  // console.info('ipfsHashMetadata', ipfsHashMetadata)
   console.info('Write seal to file')
   fs.writeFileSync(pathSeals, JSON.stringify(seals, null, 2))
   console.info('write seal to file done')
-
-  // const ipfsHashMetadata = await uploadMetadata(ipfsHashImage, audit.projectName, audit.reportUrl, audit.contracts)
-  // console.info('ipfsHashMetadata', ipfsHashMetadata)
 })
