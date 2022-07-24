@@ -16,26 +16,32 @@ task('findContract', 'find contract').setAction(async () => {
   process.on('SIGTERM', onExit)
 
   const targets = [
+    'deface',
+    'effaced',
+    'acceded',
+    'decode',
+    'seabed',
+    'efface',
+    'dabbed',
+    'codec',
+    'access',
+    'facade',
+    'bada55',
+
     '4859444e',
     '4879646e',
 
-    '5ec',
-    '35ec',
-    '45ec',
+    '5ec5afe',
 
     '5afe',
-    '45afe',
-    '35afe',
 
-    '09876',
-    '98765',
-    '87654',
-    '76543',
-    '65432',
-    '54321',
-    // '4321',
-    '01234',
-    '1234',
+    '0987654321',
+    '987654321',
+    '87654321',
+    '7654321',
+    '0123456789',
+    '012345678',
+    '1234567',
   ]
 
   while (!find) {
@@ -44,7 +50,9 @@ task('findContract', 'find contract').setAction(async () => {
       from: w1.address,
       nonce: 1,
     })
-    if (targets.find((target) => contractAddress.split('0x')[1].toLowerCase().startsWith(target))) {
+    if (targets.find((target) => contractAddress.split('0x')[1].toLowerCase().startsWith(target)
+      || w1.address.split('0x')[1].toLowerCase().startsWith(target)
+    )) {
       console.info(`
 ${new Date().toISOString()}
 wallet address ${w1.address}
