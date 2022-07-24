@@ -50,9 +50,13 @@ task('findContract', 'find contract').setAction(async () => {
       from: w1.address,
       nonce: 1,
     })
-    if (targets.find((target) => contractAddress.split('0x')[1].toLowerCase().startsWith(target)
-      || w1.address.split('0x')[1].toLowerCase().startsWith(target)
-    )) {
+    if (
+      targets.find(
+        (target) =>
+          contractAddress.split('0x')[1].toLowerCase().startsWith(target) ||
+          w1.address.split('0x')[1].toLowerCase().startsWith(target)
+      )
+    ) {
       console.info(`
 ${new Date().toISOString()}
 wallet address ${w1.address}
