@@ -13,6 +13,14 @@ task('mint', 'Mint seal').setAction(async (taskArguments, hre) => {
   if (!sealToMint) {
     throw new Error(`missing next id data ${nextId}`)
   }
+  const contracts = sealToMint.contracts.reduce((acc: string[], sealContract: SealContract) => {
+    acc.push(sealContract.address)
+    if (sealContract.isProxyEIP1967) {
+      assert(sealContract.implementation, 'Missing implementation')
+      acc.push(sealContract.implementation)
+    }
+    return acc
+  }, [])
   const { chainId } = await hre.ethers.provider.getNetwork()
   assert(chainId === sealToMint.chainId, 'Chain id invalid')
   const { deployer } = await hre.getNamedAccounts()
@@ -20,7 +28,7 @@ task('mint', 'Mint seal').setAction(async (taskArguments, hre) => {
   const HYDNSealProxyDeployment = await hre.deployments.get('HYDNSeal')
   const HYDNSeal = (await hre.ethers.getContractAt('HYDNSeal', HYDNSealProxyDeployment.address, signer)) as HYDNSeal
   console.info('Minting token...')
-  const tx = await HYDNSeal.mintSeal(sealToMint.contracts, {
+  const tx = await HYDNSeal.mintSeal(contracts, {
     gasPrice: BigNumber.from(hre.config.networks[hre.network.name].gasPrice),
   })
   console.info(`Minting token wait tx ${tx.hash}`)
