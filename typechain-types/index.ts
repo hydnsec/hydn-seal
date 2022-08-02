@@ -14,6 +14,8 @@ export type { ERC1155SupplyUpgradeable } from "./@openzeppelin/contracts-upgrade
 export type { IERC1155MetadataURIUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable";
 export type { IERC1155ReceiverUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable";
 export type { IERC1155Upgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable";
+export type { ERC1155HolderUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable";
+export type { ERC1155ReceiverUpgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155ReceiverUpgradeable";
 export type { ContextUpgradeable } from "./@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable";
 export type { ERC165Upgradeable } from "./@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable";
 export type { IERC165Upgradeable } from "./@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable";
@@ -31,6 +33,8 @@ export { ERC1155SupplyUpgradeable__factory } from "./factories/@openzeppelin/con
 export { IERC1155MetadataURIUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable__factory";
 export { IERC1155ReceiverUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable__factory";
 export { IERC1155Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable__factory";
+export { ERC1155HolderUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable__factory";
+export { ERC1155ReceiverUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155ReceiverUpgradeable__factory";
 export { ContextUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable__factory";
 export { ERC165Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable__factory";
 export { IERC165Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable__factory";

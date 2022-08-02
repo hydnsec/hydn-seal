@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 import type * as extensions from "./extensions";
+import type * as utils from "./utils";
 export type { ERC1155Upgradeable } from "./ERC1155Upgradeable";
 export type { IERC1155ReceiverUpgradeable } from "./IERC1155ReceiverUpgradeable";
 export type { IERC1155Upgradeable } from "./IERC1155Upgradeable";
 export type { extensions };
+export type { utils };

@@ -3,7 +3,7 @@
 // Hydn: Copy of OpenZeppelin - only change is to reference the modified ERC1155Upgradeable reference
 pragma solidity ^0.8.0;
 
-import "./ERC1155Upgradeable.sol";
+import './ERC1155Upgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
 /**
@@ -15,30 +15,29 @@ import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
  * same id are not going to be minted.
  */
 abstract contract ERC1155SupplyUpgradeable is Initializable, ERC1155Upgradeable {
-  function __ERC1155Supply_init() internal onlyInitializing {
-  }
+  function __ERC1155Supply_init() internal onlyInitializing {}
 
-  function __ERC1155Supply_init_unchained() internal onlyInitializing {
-  }
+  function __ERC1155Supply_init_unchained() internal onlyInitializing {}
+
   mapping(uint256 => uint256) private _totalSupply;
 
   /**
    * @dev Total amount of tokens in with a given id.
-     */
+   */
   function totalSupply(uint256 id) public view virtual returns (uint256) {
     return _totalSupply[id];
   }
 
   /**
    * @dev Indicates whether any token exist with a given id, or not.
-     */
+   */
   function exists(uint256 id) public view virtual returns (bool) {
     return ERC1155SupplyUpgradeable.totalSupply(id) > 0;
   }
 
   /**
    * @dev See {ERC1155-_beforeTokenTransfer}.
-     */
+   */
   function _beforeTokenTransfer(
     address operator,
     address from,
@@ -60,18 +59,18 @@ abstract contract ERC1155SupplyUpgradeable is Initializable, ERC1155Upgradeable 
         uint256 id = ids[i];
         uint256 amount = amounts[i];
         uint256 supply = _totalSupply[id];
-        require(supply >= amount, "ERC1155: burn amount exceeds totalSupply");
-      unchecked {
-        _totalSupply[id] = supply - amount;
-      }
+        require(supply >= amount, 'ERC1155: burn amount exceeds totalSupply');
+        unchecked {
+          _totalSupply[id] = supply - amount;
+        }
       }
     }
   }
 
   /**
    * @dev This empty reserved space is put in place to allow future versions to add new
-     * variables without shifting down storage in the inheritance chain.
-     * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
-     */
+   * variables without shifting down storage in the inheritance chain.
+   * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
+   */
   uint256[49] private __gap;
 }
