@@ -5,3 +5,4 @@ export { ERC1155SupplyUpgradeable__factory } from "./ERC1155SupplyUpgradeable__f
 export { ERC1155Upgradeable__factory } from "./ERC1155Upgradeable__factory";
 export { HYDNSealStorage__factory } from "./HYDNSealStorage__factory";
 export { HYDNSeal__factory } from "./HYDNSeal__factory";
+export * as openzepplin from "./openzepplin";

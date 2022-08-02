@@ -92,6 +92,14 @@ declare module "hardhat/types/runtime" {
       name: "HYDNSealStorage",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.HYDNSealStorage__factory>;
+    getContractFactory(
+      name: "ERC1155SupplyUpgradeable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC1155SupplyUpgradeable__factory>;
+    getContractFactory(
+      name: "ERC1155Upgradeable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC1155Upgradeable__factory>;
 
     getContractAt(
       name: "OwnableUpgradeable",
@@ -193,6 +201,16 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.HYDNSealStorage>;
+    getContractAt(
+      name: "ERC1155SupplyUpgradeable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC1155SupplyUpgradeable>;
+    getContractAt(
+      name: "ERC1155Upgradeable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC1155Upgradeable>;
 
     // default types
     getContractFactory(

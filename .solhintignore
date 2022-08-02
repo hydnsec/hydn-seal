@@ -3,5 +3,4 @@ cache
 artifacts
 coverage
 deployments
-contracts/ERC1155SupplyUpgradeable.sol
-contracts/ERC1155Upgradeable.sol
+contracts/openzepplin

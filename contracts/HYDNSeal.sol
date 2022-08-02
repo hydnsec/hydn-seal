@@ -5,8 +5,8 @@ import '@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol';
-import './ERC1155Upgradeable.sol';
-import './ERC1155SupplyUpgradeable.sol';
+import './openzepplin/ERC1155Upgradeable.sol';
+import './openzepplin/ERC1155SupplyUpgradeable.sol';
 import './HYDNSealStorage.sol';
 
 //import 'hardhat/console.sol';
