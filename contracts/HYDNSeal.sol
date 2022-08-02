@@ -5,8 +5,8 @@ import '@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol';
-import '@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol';
-import '@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol';
+import './ERC1155Upgradeable.sol';
+import './ERC1155SupplyUpgradeable.sol';
 import './HYDNSealStorage.sol';
 
 //import 'hardhat/console.sol';
@@ -82,6 +82,7 @@ contract HYDNSeal is
     totalAudits += 1;
     uint256 id = totalAudits;
     for (uint8 i = 0; i < _contracts.length; i++) {
+      require(AddressUpgradeable.isContract(_contracts[i]), 'HYDNSeal: receiver is not a contract');
       _mint(_contracts[i], id, 1, '');
     }
     return true;

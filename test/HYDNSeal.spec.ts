@@ -8,6 +8,10 @@ describe('HYDNSeal', function () {
   let signer: Signer
   let signerOther1: Signer
   let proxy: HYDNSeal
+  let implAddress: string
+  let receiver: string
+  let receiver1: string
+
   const idMultiplier = 10000000
 
   beforeEach(async () => {
@@ -22,6 +26,9 @@ describe('HYDNSeal', function () {
     await hre.upgrades.upgradeProxy(proxy.address, HYDNSealFactory, {
       kind: 'uups',
     })
+    implAddress = await hre.upgrades.erc1967.getImplementationAddress(proxy.address)
+    receiver = implAddress // use implementation as dummy contract
+    receiver1 = proxy.address // use proxy as second dummy contract
   })
 
   it('Should be setup', async () => {
@@ -32,13 +39,12 @@ describe('HYDNSeal', function () {
   })
 
   it('Should mint', async () => {
-    const address = await signer.getAddress()
-    const addresses = [address]
+    const addresses = [receiver]
     await proxy.mintSeal(addresses)
     const tokenId = await proxy.totalAudits()
     expect(tokenId).to.be.eq(1 + (hre.network.config.chainId || 0) * idMultiplier)
     expect(await proxy.totalSupply(tokenId)).to.be.eq(1)
-    expect(await proxy.balanceOf(address, tokenId)).to.be.eq(1)
+    expect(await proxy.balanceOf(receiver, tokenId)).to.be.eq(1)
     expect(await proxy.uri(tokenId)).to.be.eq(`http://localhost:3000/api/seals/${tokenId}`)
   })
 
@@ -48,17 +54,21 @@ describe('HYDNSeal', function () {
     )
   })
 
-  it('Should throw to transfer', async () => {
+  it('Should throw to mint to a non-contract address', async () => {
     const address = await signer.getAddress()
-    const receiver = await signerOther1.getAddress()
     const addresses = [address]
+    await expect(proxy.mintSeal(addresses)).to.be.revertedWith('HYDNSeal: receiver is not a contract')
+  })
+
+  it('Should throw to transfer', async () => {
+    const addresses = [receiver]
     await proxy.mintSeal(addresses)
     const tokenId = await proxy.totalAudits()
-    await expect(proxy.safeTransferFrom(address, receiver, tokenId, 1, formatBytes32String(''))).to.be.revertedWith(
+    await expect(proxy.safeTransferFrom(receiver, receiver1, tokenId, 1, formatBytes32String(''))).to.be.revertedWith(
       'HYDNSeal: transfer not allowed'
     )
     await expect(
-      proxy.safeBatchTransferFrom(address, receiver, [tokenId], [1], formatBytes32String(''))
+      proxy.safeBatchTransferFrom(receiver, receiver1, [tokenId], [1], formatBytes32String(''))
     ).to.be.revertedWith('HYDNSeal: transfer batch not allowed')
   })
 })
