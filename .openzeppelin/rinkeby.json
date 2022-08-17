@@ -2,15 +2,15 @@
   "manifestVersion": "3.2",
   "proxies": [
     {
-      "address": "0x9440AEdE13902E8EaD616De8e33E144728fd209e",
-      "txHash": "0x251732747713e25bcd3c37018bc9f17e4736e75c1c0df7ab742350c0612473d5",
+      "address": "0xce2929C6Af440eD93Bd21F7Fa0416d7c2864D833",
+      "txHash": "0x01162da85f03e5ffffad8ebe2330d5699c23aa9cc5f05d6c97e02420332cb99e",
       "kind": "uups"
     }
   ],
   "impls": {
-    "85f9fdaf78431ee3028bf6c02bca1035e4d7d6235d47acd73d800fe219f10fdc": {
-      "address": "0xD777BF83cdb51fF872edC1b541Db4a6AdF72913a",
-      "txHash": "0x8d15df13bc3d161de63094509891884a7bea7d861ca851fa4a6e6fefaf14bebd",
+    "fc647ced6d974416aa381264bf3396f60250c55f2a5fddae110665ddc6362615": {
+      "address": "0x441Cdc8b491E679563004446393FA18a2d2658A4",
+      "txHash": "0x41d68161a3647c07db7e2142c2d30189ca329aad81608731cdfcf8d791c6aa63",
       "layout": {
         "storage": [
           {
@@ -83,48 +83,48 @@
             "offset": 0,
             "slot": "251",
             "type": "t_mapping(t_uint256,t_mapping(t_address,t_uint256))",
-            "contract": "ERC1155Upgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol:25"
+            "contract": "HYDNERC1155Upgradeable",
+            "src": "contracts/openzepplin/ERC1155Upgradeable.sol:33"
           },
           {
             "label": "_operatorApprovals",
             "offset": 0,
             "slot": "252",
             "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
-            "contract": "ERC1155Upgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol:28"
+            "contract": "HYDNERC1155Upgradeable",
+            "src": "contracts/openzepplin/ERC1155Upgradeable.sol:36"
           },
           {
             "label": "_uri",
             "offset": 0,
             "slot": "253",
             "type": "t_string_storage",
-            "contract": "ERC1155Upgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol:31"
+            "contract": "HYDNERC1155Upgradeable",
+            "src": "contracts/openzepplin/ERC1155Upgradeable.sol:39"
           },
           {
             "label": "__gap",
             "offset": 0,
             "slot": "254",
             "type": "t_array(t_uint256)47_storage",
-            "contract": "ERC1155Upgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol:528"
+            "contract": "HYDNERC1155Upgradeable",
+            "src": "contracts/openzepplin/ERC1155Upgradeable.sol:542"
           },
           {
             "label": "_totalSupply",
             "offset": 0,
             "slot": "301",
             "type": "t_mapping(t_uint256,t_uint256)",
-            "contract": "ERC1155SupplyUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol:23"
+            "contract": "HYDNERC1155SupplyUpgradeable",
+            "src": "contracts/openzepplin/ERC1155SupplyUpgradeable.sol:23"
           },
           {
             "label": "__gap",
             "offset": 0,
             "slot": "302",
             "type": "t_array(t_uint256)49_storage",
-            "contract": "ERC1155SupplyUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol:76"
+            "contract": "HYDNERC1155SupplyUpgradeable",
+            "src": "contracts/openzepplin/ERC1155SupplyUpgradeable.sol:76"
           },
           {
             "label": "name",
@@ -143,7 +143,7 @@
             "src": "contracts/HYDNSealStorage.sol:8"
           },
           {
-            "label": "totalAudits",
+            "label": "currentAuditId",
             "offset": 0,
             "slot": "353",
             "type": "t_uint256",

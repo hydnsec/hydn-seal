@@ -40,7 +40,7 @@ async function main() {
 
   if (!['localhost', 'hardhat'].includes(hre.network.name)) {
     console.info('Verifying...')
-    await wait(10000)
+    await wait(20000)
     await hre.run('verify:verify', {
       address: implAddress,
       constructorArguments: [],

@@ -13,7 +13,7 @@ const proxyImplementationSlot = utils.hexlify(
 const seals: ISeal[] = sealsDataRaw
 
 async function checkProxyContract(hre: HardhatRuntimeEnvironment, sealContract: SealContract) {
-  console.info(`Check proxy EIP1967 code ${sealContract.address}`)
+  console.info(`Checking proxy EIP1967 code ${sealContract.address}`)
   assert(sealContract.implementation, `Missing implementation for ${sealContract.address}`)
   assert(
     utils.getAddress(sealContract.implementation) === sealContract.implementation,
@@ -40,7 +40,7 @@ async function checkProxyContract(hre: HardhatRuntimeEnvironment, sealContract: 
 }
 
 async function checkContract(hre: HardhatRuntimeEnvironment, sealContract: SealContract) {
-  console.info('Check raw contract code')
+  console.info('Checking raw contract code')
   const code = await hre.ethers.provider.getCode(sealContract.address)
   assert(code !== '0x', `Code is empty for ${sealContract.address}`)
   const proxyImplementationRaw = await hre.ethers.provider.getStorageAt(sealContract.address, proxyImplementationSlot)
@@ -53,18 +53,18 @@ async function checkContract(hre: HardhatRuntimeEnvironment, sealContract: SealC
 }
 
 task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
-  console.info('Start generating seal image')
+  console.info('Start generating seal')
   const newSeal: ISeal = {
     id: await hre.run('getNextId'),
-    chainId: 31337,
-    projectName: 'project name 1',
+    chainId: 4,
+    projectName: 'project name 2',
     date: '88.07.2022',
     reportUrl: 'https://hydnsec.com',
     contracts: [
       {
         isProxyEIP1967: true,
-        address: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512',
-        implementation: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+        address: '0x11E2e5621Ae0349262903e2EDbdA193B03d661Ff',
+        implementation: '0x75F862030E8b003B3945a8555f026a23e7aE0EaE',
       },
     ],
   }
@@ -92,7 +92,7 @@ task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
     })
   )
   seals.push(newSeal)
-  console.info('Write seal to file')
+  console.info('Writing seal to file')
   fs.writeFileSync(pathSeals, JSON.stringify(seals, null, 2))
   console.info('write seal to file done')
 })

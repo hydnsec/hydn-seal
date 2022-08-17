@@ -57,14 +57,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC1155Upgradeable__factory>;
     getContractFactory(
-      name: "ERC1155HolderUpgradeable",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC1155HolderUpgradeable__factory>;
-    getContractFactory(
-      name: "ERC1155ReceiverUpgradeable",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC1155ReceiverUpgradeable__factory>;
-    getContractFactory(
       name: "ContextUpgradeable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ContextUpgradeable__factory>;
@@ -77,14 +69,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165Upgradeable__factory>;
     getContractFactory(
-      name: "ERC1155SupplyUpgradeable",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC1155SupplyUpgradeable__factory>;
-    getContractFactory(
-      name: "ERC1155Upgradeable",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC1155Upgradeable__factory>;
-    getContractFactory(
       name: "HYDNSeal",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.HYDNSeal__factory>;
@@ -93,13 +77,13 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.HYDNSealStorage__factory>;
     getContractFactory(
-      name: "ERC1155SupplyUpgradeable",
+      name: "HYDNERC1155SupplyUpgradeable",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC1155SupplyUpgradeable__factory>;
+    ): Promise<Contracts.HYDNERC1155SupplyUpgradeable__factory>;
     getContractFactory(
-      name: "ERC1155Upgradeable",
+      name: "HYDNERC1155Upgradeable",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC1155Upgradeable__factory>;
+    ): Promise<Contracts.HYDNERC1155Upgradeable__factory>;
 
     getContractAt(
       name: "OwnableUpgradeable",
@@ -157,16 +141,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC1155Upgradeable>;
     getContractAt(
-      name: "ERC1155HolderUpgradeable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ERC1155HolderUpgradeable>;
-    getContractAt(
-      name: "ERC1155ReceiverUpgradeable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ERC1155ReceiverUpgradeable>;
-    getContractAt(
       name: "ContextUpgradeable",
       address: string,
       signer?: ethers.Signer
@@ -182,16 +156,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165Upgradeable>;
     getContractAt(
-      name: "ERC1155SupplyUpgradeable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ERC1155SupplyUpgradeable>;
-    getContractAt(
-      name: "ERC1155Upgradeable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ERC1155Upgradeable>;
-    getContractAt(
       name: "HYDNSeal",
       address: string,
       signer?: ethers.Signer
@@ -202,15 +166,15 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.HYDNSealStorage>;
     getContractAt(
-      name: "ERC1155SupplyUpgradeable",
+      name: "HYDNERC1155SupplyUpgradeable",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.ERC1155SupplyUpgradeable>;
+    ): Promise<Contracts.HYDNERC1155SupplyUpgradeable>;
     getContractAt(
-      name: "ERC1155Upgradeable",
+      name: "HYDNERC1155Upgradeable",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.ERC1155Upgradeable>;
+    ): Promise<Contracts.HYDNERC1155Upgradeable>;
 
     // default types
     getContractFactory(

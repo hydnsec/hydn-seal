@@ -32,6 +32,7 @@ export interface HYDNSealInterface extends utils.Interface {
   functions: {
     "balanceOf(address,uint256)": FunctionFragment;
     "balanceOfBatch(address[],uint256[])": FunctionFragment;
+    "currentAuditId()": FunctionFragment;
     "exists(uint256)": FunctionFragment;
     "initialize(string)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
@@ -45,7 +46,7 @@ export interface HYDNSealInterface extends utils.Interface {
     "setApprovalForAll(address,bool)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "symbol()": FunctionFragment;
-    "totalAudits()": FunctionFragment;
+    "totalSupply()": FunctionFragment;
     "totalSupply(uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "upgradeTo(address)": FunctionFragment;
@@ -57,6 +58,7 @@ export interface HYDNSealInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "balanceOf"
       | "balanceOfBatch"
+      | "currentAuditId"
       | "exists"
       | "initialize"
       | "isApprovedForAll"
@@ -70,8 +72,8 @@ export interface HYDNSealInterface extends utils.Interface {
       | "setApprovalForAll"
       | "supportsInterface"
       | "symbol"
-      | "totalAudits"
-      | "totalSupply"
+      | "totalSupply()"
+      | "totalSupply(uint256)"
       | "transferOwnership"
       | "upgradeTo"
       | "upgradeToAndCall"
@@ -85,6 +87,10 @@ export interface HYDNSealInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "balanceOfBatch",
     values: [PromiseOrValue<string>[], PromiseOrValue<BigNumberish>[]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "currentAuditId",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "exists",
@@ -142,11 +148,11 @@ export interface HYDNSealInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "totalAudits",
+    functionFragment: "totalSupply()",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "totalSupply",
+    functionFragment: "totalSupply(uint256)",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
@@ -169,6 +175,10 @@ export interface HYDNSealInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "balanceOfBatch",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "currentAuditId",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "exists", data: BytesLike): Result;
@@ -206,11 +216,11 @@ export interface HYDNSealInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "totalAudits",
+    functionFragment: "totalSupply()",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "totalSupply",
+    functionFragment: "totalSupply(uint256)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -381,6 +391,8 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
+    currentAuditId(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     exists(
       id: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -443,9 +455,9 @@ export interface HYDNSeal extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<[string]>;
 
-    totalAudits(overrides?: CallOverrides): Promise<[BigNumber]>;
+    "totalSupply()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    totalSupply(
+    "totalSupply(uint256)"(
       id: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
@@ -483,6 +495,8 @@ export interface HYDNSeal extends BaseContract {
     ids: PromiseOrValue<BigNumberish>[],
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
+
+  currentAuditId(overrides?: CallOverrides): Promise<BigNumber>;
 
   exists(
     id: PromiseOrValue<BigNumberish>,
@@ -546,9 +560,9 @@ export interface HYDNSeal extends BaseContract {
 
   symbol(overrides?: CallOverrides): Promise<string>;
 
-  totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
+  "totalSupply()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-  totalSupply(
+  "totalSupply(uint256)"(
     id: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -586,6 +600,8 @@ export interface HYDNSeal extends BaseContract {
       ids: PromiseOrValue<BigNumberish>[],
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
+
+    currentAuditId(overrides?: CallOverrides): Promise<BigNumber>;
 
     exists(
       id: PromiseOrValue<BigNumberish>,
@@ -647,9 +663,9 @@ export interface HYDNSeal extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<string>;
 
-    totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
+    "totalSupply()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    totalSupply(
+    "totalSupply(uint256)"(
       id: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -773,6 +789,8 @@ export interface HYDNSeal extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    currentAuditId(overrides?: CallOverrides): Promise<BigNumber>;
+
     exists(
       id: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -835,9 +853,9 @@ export interface HYDNSeal extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<BigNumber>;
 
-    totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
+    "totalSupply()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    totalSupply(
+    "totalSupply(uint256)"(
       id: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -876,6 +894,8 @@ export interface HYDNSeal extends BaseContract {
       ids: PromiseOrValue<BigNumberish>[],
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    currentAuditId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     exists(
       id: PromiseOrValue<BigNumberish>,
@@ -939,9 +959,9 @@ export interface HYDNSeal extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    totalAudits(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    "totalSupply()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    totalSupply(
+    "totalSupply(uint256)"(
       id: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

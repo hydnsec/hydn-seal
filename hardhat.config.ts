@@ -31,7 +31,7 @@ const config: HardhatUserConfig = {
         version: '0.8.2',
       },
       {
-        version: '0.8.15',
+        version: '0.8.16',
         settings: {
           // evmVersion: 'berlin',
           // viaIR: true,
@@ -101,7 +101,6 @@ const config: HardhatUserConfig = {
     },
     goerli: {
       chainId: 5,
-      // url: 'https://rpc-goerli.flashbots.net',
       url: 'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       gasPrice: parseUnits('2', 'gwei').toNumber(),
       accounts: [process.env.GOERLI_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],

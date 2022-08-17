@@ -6,13 +6,13 @@ async function main() {
   const { deployer } = await hre.getNamedAccounts()
   const signer = await hre.ethers.getSigner(deployer)
   const HYDNSealProxyDeployment = await hre.deployments.get('HYDNSeal')
-  const HYDNSeal1 = await hre.ethers.getContractFactory('HYDNSeal1', signer)
+  const HYDNSeal1 = await hre.ethers.getContractFactory('HYDNSeal', signer)
   console.info('Upgrading proxy implementation...')
   const upgradeProxy = await hre.upgrades.upgradeProxy(HYDNSealProxyDeployment.address, HYDNSeal1, {
     kind: 'uups',
     call: {
       fn: 'initialize',
-      args: ['http://localhost:3000/api/seals/'],
+      args: ['https://hydnsec.com/api/seals/'],
     },
     timeout: 0,
     pollingInterval: 10000,
@@ -34,7 +34,7 @@ async function main() {
 
   if (!['localhost', 'hardhat'].includes(hre.network.name)) {
     console.info('Verifying')
-    await wait(10000)
+    await wait(20000)
     await hre.run('verify:verify', {
       address: implAddress,
       constructorArguments: [],

@@ -2,8 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import type * as openzepplin from "./openzepplin";
-export type { ERC1155SupplyUpgradeable } from "./ERC1155SupplyUpgradeable";
-export type { ERC1155Upgradeable } from "./ERC1155Upgradeable";
 export type { HYDNSeal } from "./HYDNSeal";
 export type { HYDNSealStorage } from "./HYDNSealStorage";
 export type { openzepplin };

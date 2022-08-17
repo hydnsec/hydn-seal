@@ -32,18 +32,20 @@ describe('HYDNSeal', function () {
   })
 
   it('Should be setup', async () => {
-    expect(await proxy.totalAudits()).to.be.eq((hre.network.config.chainId || 0) * idMultiplier)
+    expect(await proxy.currentAuditId()).to.be.eq((hre.network.config.chainId || 0) * idMultiplier)
+    expect(await proxy['totalSupply()']()).to.be.eq(0)
+    expect(await proxy['totalSupply(uint256)'](0)).to.be.eq(0)
     expect(await proxy.balanceOf(await signer.getAddress(), 0)).to.be.eq(0)
     await expect(proxy.uri(0)).to.be.revertedWith('HYDNSeal: token not existing')
-    expect(await proxy.totalSupply(0)).to.be.eq(0)
+    expect(await proxy['totalSupply(uint256)'](0)).to.be.eq(0)
   })
 
   it('Should mint', async () => {
     const addresses = [receiver]
     await proxy.mintSeal(addresses)
-    const tokenId = await proxy.totalAudits()
+    const tokenId = await proxy.currentAuditId()
     expect(tokenId).to.be.eq(1 + (hre.network.config.chainId || 0) * idMultiplier)
-    expect(await proxy.totalSupply(tokenId)).to.be.eq(1)
+    expect(await proxy['totalSupply(uint256)'](tokenId)).to.be.eq(1)
     expect(await proxy.balanceOf(receiver, tokenId)).to.be.eq(1)
     expect(await proxy.uri(tokenId)).to.be.eq(`http://localhost:3000/api/seals/${tokenId}`)
   })
@@ -63,7 +65,7 @@ describe('HYDNSeal', function () {
   it('Should throw to transfer', async () => {
     const addresses = [receiver]
     await proxy.mintSeal(addresses)
-    const tokenId = await proxy.totalAudits()
+    const tokenId = await proxy.currentAuditId()
     await expect(proxy.safeTransferFrom(receiver, receiver1, tokenId, 1, formatBytes32String(''))).to.be.revertedWith(
       'HYDNSeal: transfer not allowed'
     )

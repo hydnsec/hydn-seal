@@ -6,7 +6,7 @@ task('getNextId', 'Get next id').setAction(async (taskArguments, hre) => {
   const signer = await hre.ethers.getSigner(deployer)
   const HYDNSealProxyDeployment = await hre.deployments.get('HYDNSeal')
   const HYDNSeal = (await hre.ethers.getContractAt('HYDNSeal', HYDNSealProxyDeployment.address, signer)) as HYDNSeal
-  const nextId = (await HYDNSeal.totalAudits()).add(1).toString()
+  const nextId = (await HYDNSeal.currentAuditId()).add(1).toString()
   console.info('Next id', nextId)
   return nextId
 })

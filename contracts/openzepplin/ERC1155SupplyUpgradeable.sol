@@ -3,6 +3,7 @@
 // Hydn: Copy of OpenZeppelin - only change is to reference the modified ERC1155Upgradeable reference
 pragma solidity ^0.8.0;
 
+import '@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol';
 import './ERC1155Upgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
@@ -14,7 +15,7 @@ import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
  * corresponding is an NFT, there is no guarantees that no other token with the
  * same id are not going to be minted.
  */
-abstract contract ERC1155SupplyUpgradeable is Initializable, ERC1155Upgradeable {
+abstract contract HYDNERC1155SupplyUpgradeable is Initializable, HYDNERC1155Upgradeable {
   function __ERC1155Supply_init() internal onlyInitializing {}
 
   function __ERC1155Supply_init_unchained() internal onlyInitializing {}
@@ -32,7 +33,7 @@ abstract contract ERC1155SupplyUpgradeable is Initializable, ERC1155Upgradeable 
    * @dev Indicates whether any token exist with a given id, or not.
    */
   function exists(uint256 id) public view virtual returns (bool) {
-    return ERC1155SupplyUpgradeable.totalSupply(id) > 0;
+    return HYDNERC1155SupplyUpgradeable.totalSupply(id) > 0;
   }
 
   /**

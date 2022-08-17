@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.15;
+pragma solidity 0.8.16;
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 import '@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol';
@@ -16,8 +16,8 @@ contract HYDNSeal is
   ContextUpgradeable,
   UUPSUpgradeable,
   OwnableUpgradeable,
-  ERC1155Upgradeable,
-  ERC1155SupplyUpgradeable,
+  HYDNERC1155Upgradeable,
+  HYDNERC1155SupplyUpgradeable,
   HYDNSealStorage
 {
   /// @custom:oz-upgrades-unsafe-allow constructor
@@ -31,7 +31,7 @@ contract HYDNSeal is
     __Ownable_init();
     __ERC1155_init(_baseURI);
     __ERC1155Supply_init();
-    totalAudits = block.chainid * 10_000_000;
+    currentAuditId = block.chainid * 10_000_000;
     name = 'HYDN Seal';
     // solhint-disable-next-line prettier/prettier
     // prettier-ignore
@@ -49,7 +49,7 @@ contract HYDNSeal is
     uint256[] memory ids,
     uint256[] memory amounts,
     bytes memory data
-  ) internal virtual override(ERC1155SupplyUpgradeable, ERC1155Upgradeable) {
+  ) internal virtual override(HYDNERC1155SupplyUpgradeable, HYDNERC1155Upgradeable) {
     super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
   }
 
@@ -78,10 +78,14 @@ contract HYDNSeal is
     return string(abi.encodePacked(super.uri(_tokenId), StringsUpgradeable.toString(_tokenId)));
   }
 
+  function totalSupply() public view returns (uint256) {
+    return currentAuditId - block.chainid * 10_000_000;
+  }
+
   function mintSeal(address[] calldata _contracts) external onlyOwner returns (bool success) {
-    totalAudits += 1;
-    uint256 id = totalAudits;
-    for (uint8 i = 0; i < _contracts.length; i++) {
+    currentAuditId += 1;
+    uint256 id = currentAuditId;
+    for (uint256 i = 0; i < _contracts.length; i++) {
       require(AddressUpgradeable.isContract(_contracts[i]), 'HYDNSeal: receiver is not a contract');
       _mint(_contracts[i], id, 1, '');
     }

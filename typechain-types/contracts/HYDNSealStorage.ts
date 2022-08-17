@@ -21,28 +21,28 @@ import type {
 
 export interface HYDNSealStorageInterface extends utils.Interface {
   functions: {
+    "currentAuditId()": FunctionFragment;
     "name()": FunctionFragment;
     "symbol()": FunctionFragment;
-    "totalAudits()": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic: "name" | "symbol" | "totalAudits"
+    nameOrSignatureOrTopic: "currentAuditId" | "name" | "symbol"
   ): FunctionFragment;
 
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "totalAudits",
+    functionFragment: "currentAuditId",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "name", values?: undefined): string;
+  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
 
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "totalAudits",
+    functionFragment: "currentAuditId",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
 
   events: {};
 }
@@ -74,42 +74,42 @@ export interface HYDNSealStorage extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    currentAuditId(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     name(overrides?: CallOverrides): Promise<[string]>;
 
     symbol(overrides?: CallOverrides): Promise<[string]>;
-
-    totalAudits(overrides?: CallOverrides): Promise<[BigNumber]>;
   };
+
+  currentAuditId(overrides?: CallOverrides): Promise<BigNumber>;
 
   name(overrides?: CallOverrides): Promise<string>;
 
   symbol(overrides?: CallOverrides): Promise<string>;
 
-  totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
-
   callStatic: {
+    currentAuditId(overrides?: CallOverrides): Promise<BigNumber>;
+
     name(overrides?: CallOverrides): Promise<string>;
 
     symbol(overrides?: CallOverrides): Promise<string>;
-
-    totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   filters: {};
 
   estimateGas: {
+    currentAuditId(overrides?: CallOverrides): Promise<BigNumber>;
+
     name(overrides?: CallOverrides): Promise<BigNumber>;
 
     symbol(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalAudits(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    currentAuditId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalAudits(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

@@ -4,6 +4,7 @@
 //  - _mint function do not call the _doSafeTransferAcceptanceCheck hook as the token is not transferable we don't want to check if the contract accept it or not
 
 pragma solidity ^0.8.0;
+import '@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155ReceiverUpgradeable.sol';
 import '@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol';
@@ -19,7 +20,7 @@ import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
  *
  * _Available since v3.1._
  */
-contract ERC1155Upgradeable is
+contract HYDNERC1155Upgradeable is
   Initializable,
   ContextUpgradeable,
   ERC165Upgradeable,
