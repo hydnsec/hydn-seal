@@ -33,8 +33,6 @@ jobs:
         run: npm run test:coverage
         env:
           CI: true
-          PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
-          PINATA_API_SECRET: ${{ secrets.PINATA_API_SECRET }}
       - name: Testing Coverage Check
         run: npm run test:coverage:check
         env:

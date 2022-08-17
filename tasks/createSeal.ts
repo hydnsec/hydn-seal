@@ -3,8 +3,6 @@ import { BigNumber, utils } from 'ethers'
 import fs from 'fs'
 import { task } from 'hardhat/config'
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
-import { uploadImage } from '../modules/pinata'
-import { sealGenerator } from '../modules/sealGenerator'
 import sealsDataRaw from '../modules/seals.json'
 const pathSeals = './modules/seals.json'
 
@@ -93,15 +91,7 @@ task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
       }
     })
   )
-
-  const path = await sealGenerator(newSeal.date)
-  console.info('upload image to ipfs', path)
-  const ipfsHashImage = await uploadImage(path, newSeal.projectName)
-  console.info('ipfsHashImage', ipfsHashImage)
-  newSeal.ipfsHashImage = ipfsHashImage
   seals.push(newSeal)
-  // const ipfsHashMetadata = await uploadMetadata(ipfsHashImage, newSeal.projectName, newSeal.reportUrl, newSeal.contracts)
-  // console.info('ipfsHashMetadata', ipfsHashMetadata)
   console.info('Write seal to file')
   fs.writeFileSync(pathSeals, JSON.stringify(seals, null, 2))
   console.info('write seal to file done')

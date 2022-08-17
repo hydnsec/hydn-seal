@@ -1,5 +1,4 @@
 import '@nomicfoundation/hardhat-toolbox'
-import '@nomiclabs/hardhat-etherscan'
 import '@openzeppelin/hardhat-upgrades'
 import 'dotenv/config'
 import { parseUnits } from 'ethers/lib/utils'

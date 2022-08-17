@@ -12,6 +12,5 @@ interface ISeal {
   projectName: string
   date: string
   reportUrl: string
-  ipfsHashImage?: string
   contracts: SealContract[]
 }
