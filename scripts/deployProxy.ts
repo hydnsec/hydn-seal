@@ -1,11 +1,24 @@
+import { parseEther } from 'ethers/lib/utils'
 import hre from 'hardhat'
-import { wait } from '../modules/utils'
+import { displayAmount, wait } from '../modules/utils'
 
 async function main() {
   const { save } = hre.deployments
   const { deployer } = await hre.getNamedAccounts()
-  const signer = await hre.ethers.getSigner(deployer)
 
+  if (['localhost', 'hardhat'].includes(hre.network.name)) {
+    const { funder } = await hre.getNamedAccounts()
+    const signerFunder = await hre.ethers.getSigner(funder)
+    console.info(`Funder balance ${displayAmount(await hre.ethers.provider.getBalance(funder))}`)
+    await signerFunder.sendTransaction({
+      to: deployer,
+      value: parseEther('1'),
+    })
+  }
+
+  const signer = await hre.ethers.getSigner(deployer)
+  const balanceStart = await hre.ethers.provider.getBalance(deployer)
+  console.info(`Deployer starting balance ${displayAmount(balanceStart)}`)
   const HYDNSeal = await hre.ethers.getContractFactory('HYDNSeal', signer)
   console.info('Deploying proxy...')
   const proxy = await hre.upgrades.deployProxy(HYDNSeal, ['https://hydnsec.com/api/seals/'], {
@@ -37,6 +50,8 @@ async function main() {
   console.info('Saving artifacts...')
   await save('HYDNSeal', proxyDeployments)
   console.info('Save artifacts done')
+  const balanceEnd = await hre.ethers.provider.getBalance(deployer)
+  console.info(`Deployer end balance ${displayAmount(balanceEnd)} cost ${displayAmount(balanceStart.sub(balanceEnd))}`)
 
   if (!['localhost', 'hardhat'].includes(hre.network.name)) {
     console.info('Verifying...')

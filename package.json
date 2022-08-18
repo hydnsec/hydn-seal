@@ -37,7 +37,12 @@
     "script:upgradeProxy:rinkeby": "hardhat run scripts/upgradeProxy.ts --network rinkeby",
     "task:createSeal:rinkeby": "hardhat createSeal --network rinkeby",
     "task:getNextId:rinkeby": "hardhat getNextId --network rinkeby",
-    "task:mint:rinkeby": "hardhat mint --network rinkeby"
+    "task:mint:rinkeby": "hardhat mint --network rinkeby",
+    "script:deployProxy:ethereum": "hardhat run scripts/deployProxy.ts --network ethereum",
+    "script:upgradeProxy:ethereum": "hardhat run scripts/upgradeProxy.ts --network ethereum",
+    "task:createSeal:ethereum": "hardhat createSeal --network ethereum",
+    "task:getNextId:ethereum": "hardhat getNextId --network ethereum",
+    "task:mint:ethereum": "hardhat mint --network ethereum"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",

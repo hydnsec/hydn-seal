@@ -58,25 +58,27 @@ const config: HardhatUserConfig = {
     ],
   },
   namedAccounts: {
-    funder: {
-      default: 1,
-    },
+    funder: 1,
     deployer: {
       localhost: 0,
       hardhat: 0,
       goerli: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
       rinkeby: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
-      bsc: '0xa559a9Af609CEDC440433F57a02b6E7bB3B89bB0',
+      bsc: '0x34379d44Fc50dc40Aab4b1551d8b159388f53ed8',
+      ethereum: '0x34379d44Fc50dc40Aab4b1551d8b159388f53ed8',
     },
   },
   networks: {
     localhost: {
       url: `http://127.0.0.1:8545`,
-      gasPrice: parseUnits('1', 'gwei').toNumber(),
-      accounts: [process.env.LOCAL_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
+      gasPrice: parseUnits('10', 'gwei').toNumber(),
+      accounts: [
+        process.env.LOCAL_DEPLOYER_PRIVATE_KEY || defaultPrivateKey,
+        '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
+      ],
     },
     hardhat: {
-      gasPrice: parseUnits('1', 'gwei').toNumber(),
+      gasPrice: parseUnits('10', 'gwei').toNumber(),
     },
 
     bsc: {
@@ -96,7 +98,7 @@ const config: HardhatUserConfig = {
     ethereum: {
       chainId: 1,
       url: 'https://rpc.ankr.com/eth',
-      gasPrice: parseUnits('71', 'gwei').toNumber(),
+      gasPrice: parseUnits('8', 'gwei').toNumber(),
       accounts: [process.env.ETHEREUM_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
     },
     goerli: {
