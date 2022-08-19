@@ -1,21 +1,5 @@
 [
   {
-    "id": "313370000001",
-    "chainId": 31337,
-    "projectName": "project name 1",
-    "date": "88.07.2022",
-    "reportUrl": "https://hydnsec.com",
-    "contracts": [
-      {
-        "isProxyEIP1967": true,
-        "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        "implementation": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-        "codeHash": "0x330b9f1afee9d71fb2ee42927a996a39889a45323883a66a194e210ab850d111",
-        "implementationCodeHash": "0xf51a5aeea071e7980698415806e53076fee17db30009ac8fc36697f1b75717c6"
-      }
-    ]
-  },
-  {
     "id": "40000001",
     "chainId": 4,
     "projectName": "project name 1",
@@ -44,6 +28,19 @@
         "implementation": "0x75F862030E8b003B3945a8555f026a23e7aE0EaE",
         "codeHash": "0x330b9f1afee9d71fb2ee42927a996a39889a45323883a66a194e210ab850d111",
         "implementationCodeHash": "0x0d5cabe42f8c48bad20ae8ae964bd61af1280d1224f75d381466d346f0482bdb"
+      }
+    ]
+  },
+  {
+    "id": "10000001",
+    "chainId": 1,
+    "projectName": "Dancing Seahorse MintPass",
+    "date": "19.08.2022",
+    "reportUrl": "https://github.com/hydnsec/audits/raw/main/dancingSeahorse/Dancing-Seahorse-MintPass-NFT-Smart-Contract-Audit-report-19082022.pdf",
+    "contracts": [
+      {
+        "address": "0x8F86C6fa0F2Aa138D256ed7Ab5C64181e60a6f89",
+        "codeHash": "0x322a27e9dafaf12655bdd61a923d2447e7bbfdb8fa9f393e9b5ff4be3fb0b394"
       }
     ]
   }
