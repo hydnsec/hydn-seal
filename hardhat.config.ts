@@ -98,7 +98,7 @@ const config: HardhatUserConfig = {
     ethereum: {
       chainId: 1,
       url: 'https://rpc.ankr.com/eth',
-      gasPrice: parseUnits('16', 'gwei').toNumber(),
+      gasPrice: parseUnits('26', 'gwei').toNumber(),
       accounts: [process.env.ETHEREUM_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
     },
     goerli: {

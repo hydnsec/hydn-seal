@@ -57,13 +57,13 @@ task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
   const newSeal: ISeal = {
     id: await hre.run('getNextId'),
     chainId: 1,
-    projectName: 'Dancing Seahorse MintPass',
-    date: '19.08.2022',
+    projectName: 'Dancing Seahorse Legendary',
+    date: '12.09.2022',
     reportUrl:
-      'https://github.com/hydnsec/audits/raw/main/dancingSeahorse/Dancing-Seahorse-MintPass-NFT-Smart-Contract-Audit-report-19082022.pdf',
+      'https://github.com/hydnsec/audits/raw/main/Dancing%20Seahorse%20-%20Legendary/Dancing-Seahorse-Legendary-Audit-report.pdf',
     contracts: [
       {
-        address: '0x8F86C6fa0F2Aa138D256ed7Ab5C64181e60a6f89',
+        address: '0x92342459caca0DAdf2DA27772b4945bD3E46C33d',
       },
     ],
   }

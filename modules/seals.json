@@ -36,11 +36,24 @@
     "chainId": 1,
     "projectName": "Dancing Seahorse MintPass",
     "date": "19.08.2022",
-    "reportUrl": "https://github.com/hydnsec/audits/raw/main/dancingSeahorse/Dancing-Seahorse-MintPass-NFT-Smart-Contract-Audit-report-19082022.pdf",
+    "reportUrl": "https://github.com/hydnsec/audits/raw/main/Dancing%20Seahorse%20-%20MintPass/Dancing-Seahorse-MintPass-NFT-Smart-Contract-Audit-report-19082022.pdf",
     "contracts": [
       {
         "address": "0x8F86C6fa0F2Aa138D256ed7Ab5C64181e60a6f89",
         "codeHash": "0x322a27e9dafaf12655bdd61a923d2447e7bbfdb8fa9f393e9b5ff4be3fb0b394"
+      }
+    ]
+  },
+  {
+    "id": "10000002",
+    "chainId": 1,
+    "projectName": "Dancing Seahorse Legendary",
+    "date": "12.09.2022",
+    "reportUrl": "https://github.com/hydnsec/audits/raw/main/Dancing%20Seahorse%20-%20Legendary/Dancing-Seahorse-Legendary-Audit-report.pdf",
+    "contracts": [
+      {
+        "address": "0x92342459caca0DAdf2DA27772b4945bD3E46C33d",
+        "codeHash": "0x26a77c007c8e67dacb07c01d6d310f9a63d3cc198f974a60ce0d0564437f2095"
       }
     ]
   }
