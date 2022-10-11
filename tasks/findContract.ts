@@ -52,9 +52,7 @@ task('findContract', 'find contract').setAction(async () => {
       nonce: 1,
     })
     const target = targets.find(
-      (target) =>
-        contractAddress.split('0x')[1].startsWith(target) ||
-        w1.address.split('0x')[1].startsWith(target)
+      (target) => contractAddress.split('0x')[1].startsWith(target) || w1.address.split('0x')[1].startsWith(target)
     )
     if (target) {
       console.info(`
