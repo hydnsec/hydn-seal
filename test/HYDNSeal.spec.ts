@@ -41,14 +41,18 @@ describe('HYDNSeal', function () {
   })
 
   it('Cannot initialize more than 1 time', async () => {
-    await expect(proxy.initialize('http://localhost:3000/api/seals/')).to.be.revertedWith('Initializable: contract is already initialized')
+    await expect(proxy.initialize('http://localhost:3000/api/seals/')).to.be.revertedWith(
+      'Initializable: contract is already initialized'
+    )
   })
 
   it('Cannot upgrade if not owner', async () => {
     const HYDNSealFactory = await hre.ethers.getContractFactory('HYDNSeal', signerOther1)
-    await expect(hre.upgrades.upgradeProxy(proxy.address, HYDNSealFactory, {
-      kind: 'uups',
-    })).to.be.revertedWith('Ownable: caller is not the owner')
+    await expect(
+      hre.upgrades.upgradeProxy(proxy.address, HYDNSealFactory, {
+        kind: 'uups',
+      })
+    ).to.be.revertedWith('Ownable: caller is not the owner')
   })
 
   it('Should mint', async () => {
