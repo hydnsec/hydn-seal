@@ -59,8 +59,7 @@ task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
     chainId: 43114,
     projectName: 'Swapsicle',
     date: '07.10.2022',
-    reportUrl:
-      'https://github.com/hydnsec/audits/raw/main/Swapsicle%20-%20IceBox/Swapsicle-IceBox-Audit-report.pdf',
+    reportUrl: 'https://github.com/hydnsec/audits/raw/main/Swapsicle%20-%20IceBox/Swapsicle-IceBox-Audit-report.pdf',
     contracts: [
       {
         address: '0x6aA10ead8531504a8A3B04a9BfCFd18108F2d2c2',
