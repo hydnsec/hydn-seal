@@ -66,6 +66,8 @@ const config: HardhatUserConfig = {
       rinkeby: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
       bsc: '0x34379d44Fc50dc40Aab4b1551d8b159388f53ed8',
       ethereum: '0x34379d44Fc50dc40Aab4b1551d8b159388f53ed8',
+      fuji: '0xe912C2be7ce2Bcc4211e27e6fE9D01471aa00A36',
+      avalanche: '0x34379d44Fc50dc40Aab4b1551d8b159388f53ed8',
     },
   },
   networks: {
@@ -137,6 +139,12 @@ const config: HardhatUserConfig = {
       url: 'https://rpc.ankr.com/avalanche',
       gasPrice: parseUnits('30', 'gwei').toNumber(),
       accounts: [process.env.AVALANCE_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
+    },
+    fuji: {
+      chainId: 43113,
+      url: 'https://api.avax-test.network/ext/bc/C/rpc',
+      gasPrice: parseUnits('30', 'gwei').toNumber(),
+      accounts: [process.env.FUJI_DEPLOYER_PRIVATE_KEY || defaultPrivateKey],
     },
     moonriver: {
       chainId: 1285,
