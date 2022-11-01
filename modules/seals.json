@@ -56,5 +56,18 @@
         "codeHash": "0x26a77c007c8e67dacb07c01d6d310f9a63d3cc198f974a60ce0d0564437f2095"
       }
     ]
+  },
+  {
+    "id": "431140000001",
+    "chainId": 43114,
+    "projectName": "Swapsicle IceBox",
+    "date": "07.10.2022",
+    "reportUrl": "https://github.com/hydnsec/audits/raw/main/Swapsicle%20-%20IceBox/Swapsicle-IceBox-Audit-report.pdf",
+    "contracts": [
+      {
+        "address": "0x6aA10ead8531504a8A3B04a9BfCFd18108F2d2c2",
+        "codeHash": "0x62bc2692bb033754ec4a66d015a54f6aee6ac3ff9e412ccbb8952cb6e044477c"
+      }
+    ]
   }
 ]

@@ -56,14 +56,14 @@ task('createSeal', 'Create seal').setAction(async (taskArguments, hre) => {
   console.info('Start generating seal')
   const newSeal: ISeal = {
     id: await hre.run('getNextId'),
-    chainId: 1,
-    projectName: 'Dancing Seahorse Legendary',
-    date: '12.09.2022',
+    chainId: 43114,
+    projectName: 'Swapsicle',
+    date: '07.10.2022',
     reportUrl:
-      'https://github.com/hydnsec/audits/raw/main/Dancing%20Seahorse%20-%20Legendary/Dancing-Seahorse-Legendary-Audit-report.pdf',
+      'https://github.com/hydnsec/audits/raw/main/Swapsicle%20-%20IceBox/Swapsicle-IceBox-Audit-report.pdf',
     contracts: [
       {
-        address: '0x92342459caca0DAdf2DA27772b4945bD3E46C33d',
+        address: '0x6aA10ead8531504a8A3B04a9BfCFd18108F2d2c2',
       },
     ],
   }
