@@ -11,8 +11,8 @@ async function main() {
   const upgradeProxy = await hre.upgrades.upgradeProxy(HYDNSealProxyDeployment.address, HYDNSeal1, {
     kind: 'uups',
     call: {
-      fn: 'initialize',
-      args: ['https://hydnsec.com/api/seals/'],
+      fn: 'reinitialize',
+      args: ['https://seal.hydnsec.com/api/seals/'],
     },
     timeout: 0,
     pollingInterval: 10000,

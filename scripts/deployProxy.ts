@@ -21,7 +21,7 @@ async function main() {
   console.info(`Deployer starting balance ${displayAmount(balanceStart)}`)
   const HYDNSeal = await hre.ethers.getContractFactory('HYDNSeal', signer)
   console.info('Deploying proxy...')
-  const proxy = await hre.upgrades.deployProxy(HYDNSeal, ['https://hydnsec.com/api/seals/'], {
+  const proxy = await hre.upgrades.deployProxy(HYDNSeal, ['https://seal.hydnsec.com/api/seals/'], {
     kind: 'uups',
     timeout: 0,
     pollingInterval: 10000,

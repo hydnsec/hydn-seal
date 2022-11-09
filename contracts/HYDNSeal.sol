@@ -38,6 +38,10 @@ contract HYDNSeal is
     symbol = unicode"⛑";
   }
 
+  function reinitialize(string memory _baseURI) external reinitializer(2) {
+    _setURI(_baseURI);
+  }
+
   function _authorizeUpgrade(address newImplementation) internal override onlyOwner {
     newImplementation; // avoid empty block
   }
