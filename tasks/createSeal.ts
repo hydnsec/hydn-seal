@@ -26,7 +26,7 @@ async function checkProxyContract(hre: HardhatRuntimeEnvironment, sealContract: 
     proxyImplementationRaw !== hre.ethers.constants.HashZero,
     `Implementation slot empty for ${sealContract.address}`
   )
-  const proxyImplementation = utils.getAddress(utils.hexStripZeros(proxyImplementationRaw))
+  const proxyImplementation = utils.getAddress(utils.hexZeroPad(utils.hexStripZeros(proxyImplementationRaw), 20))
   assert(
     proxyImplementation === sealContract.implementation,
     `Implementation mismatch for ${sealContract.implementation}`
