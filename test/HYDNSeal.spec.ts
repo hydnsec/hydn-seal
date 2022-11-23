@@ -88,4 +88,15 @@ describe('HYDNSeal', function () {
       proxy.safeBatchTransferFrom(receiver, receiver1, [tokenId], [1], formatBytes32String(''))
     ).to.be.revertedWith('HYDNSeal: transfer batch not allowed')
   })
+
+  it('Cannot reinitialize more than 1 time', async () => {
+    await proxy.reinitialize('http://localhost1:3000/api/seals/')
+    const addresses = [receiver]
+    await proxy.mintSeal(addresses)
+    const tokenId = await proxy.currentAuditId()
+    expect(await proxy.uri(tokenId)).to.be.eq(`http://localhost1:3000/api/seals/${tokenId}`)
+    await expect(proxy.reinitialize('http://localhost2:3000/api/seals/')).to.be.revertedWith(
+      'Initializable: contract is already initialized'
+    )
+  })
 })
